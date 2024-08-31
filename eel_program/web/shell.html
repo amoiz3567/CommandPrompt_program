@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/shell.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <meta name="theme-color" content="#2d2929">
+    <title>PS (PoopShell)</title>
+</head>
+
+<body>
+    <div id="pointer_" style="background: transparent; position: absolute; margin: 0; padding: 0; left: 0; top: 0; height: 100vh;">
+        <div id="cmd-display" contenteditable="true">hey broooo</div>
+        <textarea class="textarea-container" onkeydown="onTestChange();" wrap="physical" name="comments" id="textarea" spellcheck="false" style="width: 100vw; outline: 0; padding: 25px 10px; color: rgb(255, 255, 255); height: 100vh; white-space: pre;">Moiz's PS (PoopShell).
+Copyright (C) abdul moiz. All rights reserved.
+ ____  __   __ ____ ____ _  _ ____ __   __   
+(  _ \/  \ /  (  _ / ___/ )( (  __(  ) (  )  
+ ) __(  O (  O ) __\___ ) __ () _)/ (_// (_/\
+(__)  \__/ \__(__) (____\_)(_(____\____\____/
+make it (P)etter.
+$ </textarea>
+    </div>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script>
+        async function onTestChange() {
+            var key = window.event.keyCode || event.which;
+            if (key === 13) {
+                window.event.preventDefault();
+                const textarea = document.getElementById("textarea");
+                const val = textarea.value.split("$ ").pop();
+                if (val == "cls") {
+                    textarea.innerHTML = `$ `; // Update the textarea with the output
+                    return false;
+                }
+                const output = await eel.run_script(val)(); // Await the Eel call
+                textarea.innerHTML = await textarea.value + `\n${output[0]}\n$ `; // Update the textarea with the output
+                moveCaretToEnd(textarea);
+                textarea.scrollTop = textarea.scrollHeight; // Scroll to the bottom
+                updateIndex();
+                return false;
+            } else {
+                return true;
+            }
+        }
+        function moveCaretToEnd(el) {
+            const range = document.createRange();
+            const selection = window.getSelection();
+            range.selectNodeContents(el);
+            range.collapse(false);
+            selection.removeAllRanges();
+            selection.addRange(range);
+            el.focus();
+        }
+
+        const e = function e() {
+            function preventDefault() {};
+        }
+        console.log(e.preventDefault())
+        onTestChange(e)
+        document.getElementById("textarea").focus();
+    </script>
+    <script>
+        function rem(val) {
+            var rmSpan = document.getElementById("nwice");
+            var span = document.getElementById("spn");
+            var mnd = document.getElementById("pointer");
+            rmSpan.remove();
+            mnd.innerText += val;
+            var input = document.getElementById("inp")
+
+
+            fs.writeFile('cmd', val, (err) => {
+                // In case of a error throw err.
+                if (err) throw err;
+            })
+
+            numberOfYourChoice = 4
+            for (var i = 0; i < numberOfYourChoice; i++) {
+                var clone = rmSpan;
+                clone.attr("id", "id[" + i + "]");
+                clone.attr("name", "name[" + i + "]");
+                document.append(clone);
+            }
+        }
+
+        function displayPrompt(val) {
+            var shel = document.getElementById("spn");
+            shel.innerText = val;
+        }
+
+        function appendBtn() {
+            var newBtn = document.getElementById("pointer_");
+            document.getElementById("shell").append(newBtn);
+        }
+
+        document.getElementById("btn").addEventListener("click", function() {
+            var input = document.getElementById("pointer");
+            var now = document.getElementById("now");
+            var commandresult = document.getElementsByClassName("whiteT");
+            //input.replaceChild(bakwf);
+            //div.append(now);
+            input.innerHTML +=
+                "<div id=\"pointer_U\"><div id=\"pointerU\"><h1 class=\"root\"><space></space>~/d/Users/Titanium2<p class=\"non\"><space>..</space>$</p></h1></div></div>";
+            //input.innerHTML+="<div class=\"oh-input\"><span>coommand</span></div>";
+            input.innerHTML +=
+                "<div class=\"oh-input\" id=\"nwice\"><span id=\"spn\"></span></div>";
+            commandresult.style.opacity = "100%";
+
+        });
+
+
+        function start() {
+            switch (keyCode) {
+                // ENTER
+                case 13:
+                    {
+                        terminal.append("\n");
+                        displayPrompt();
+                        break;
+                    }
+                default:
+                    {
+                        appendCommand(String.fromCharCode(keyCode));
+                    }
+            }
+        }
+        //start()
+    </script>
+    <script>
+        function updateIndex() {
+            $('#textarea').on("keydown", function() {
+                if ($(this).val().indexOf($(this).text()) === -1) {
+                    $(this).val($(this).text());
+                }
+            });
+            $('#textarea').on("scroll", function() {
+                if ($(this).val().indexOf($(this).text()) === -1) {
+                    $(this).val($(this).text());
+                }
+            });
+            $('#textarea').on("input", function() {
+                if ($(this).val().indexOf($(this).text()) === -1) {
+                    $(this).val($(this).text());
+                }
+            });
+        }
+        updateIndex()
+    </script>
+    <!--?php
+    extract($_REQUEST);
+    $file=fopen("cmd","a");
+
+    fwrite($file, val);
+    fclose($file);
+    header("location: index.php");
+    ?-->
+</body>
+
+</html>

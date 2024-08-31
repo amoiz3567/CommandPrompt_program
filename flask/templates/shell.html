@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/shell.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <title>Web-shell</title>
+</head>
+
+<body>
+    <div id="pointer_" style="background: transparent; position: absolute; margin: 0; padding: 0; left: 0; top: 0; height: 100vh;">
+        <textarea class="textarea-container" onkeydown="onTestChange(event);updateIndex()" wrap="physical" name="comments" id="textarea" spellcheck="false" style="width: 100vw; outline: 0; padding: 25px 10px; background-color: black; color: rgb(255, 255, 255); height: 100vh;">Moiz's HoneyShell.
+Copyright (C) abdul moiz. All rights reserved.
+
+
+HoneyBaby:{{ a }}$ </textarea>
+    </div>
+    <script>
+        function syncFetch(cmd='', val=null) {
+            const url = "http://127.0.0.1:5000/"+cmd;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", url, false); // 'false' makes the request synchronous
+            xhr.send(val);
+
+            if (xhr.status === 200) {
+                return xhr.responseText;
+            } else {
+                throw new Error("Request failed with status " + xhr.status);
+            }
+        }
+    </script>
+    <script>
+        function onTestChange(event) {
+            var key = window.event.keyCode;
+            // If the user has pressed enter
+            if (key === 13) {
+                event.preventDefault();
+                console.log(document.getElementById("textarea").value.split("$ ")[document.getElementById("textarea").value.split("$ ").length-1]);
+                document.getElementById("textarea").innerHTML = document.getElementById("textarea").value + `\n${syncFetch('cmd', val=document.getElementById("textarea").value.split("$ ")[document.getElementById("textarea").value.split("$ ").length-1])}\nHoneyBaby:${syncFetch()}$ `;
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+    <script>
+        function rem(val) {
+            var rmSpan = document.getElementById("nwice");
+            var span = document.getElementById("spn");
+            var mnd = document.getElementById("pointer");
+            rmSpan.remove();
+            mnd.innerText += val;
+            var input = document.getElementById("inp")
+
+
+            fs.writeFile('cmd', val, (err) => {
+                // In case of a error throw err.
+                if (err) throw err;
+            })
+
+            numberOfYourChoice = 4
+            for (var i = 0; i < numberOfYourChoice; i++) {
+                var clone = rmSpan;
+                clone.attr("id", "id[" + i + "]");
+                clone.attr("name", "name[" + i + "]");
+                document.append(clone);
+            }
+        }
+
+        function displayPrompt(val) {
+            var shel = document.getElementById("spn");
+            shel.innerText = val;
+        }
+
+        function appendBtn() {
+            var newBtn = document.getElementById("pointer_");
+            document.getElementById("shell").append(newBtn);
+        }
+
+        document.getElementById("btn").addEventListener("click", function() {
+            var input = document.getElementById("pointer");
+            var now = document.getElementById("now");
+            var commandresult = document.getElementsByClassName("whiteT");
+            //input.replaceChild(bakwf);
+            //div.append(now);
+            input.innerHTML +=
+                "<div id=\"pointer_U\"><div id=\"pointerU\"><h1 class=\"root\"><space></space>~/d/Users/Titanium2<p class=\"non\"><space>..</space>$</p></h1></div></div>";
+            //input.innerHTML+="<div class=\"oh-input\"><span>coommand</span></div>";
+            input.innerHTML +=
+                "<div class=\"oh-input\" id=\"nwice\"><span id=\"spn\"></span></div>";
+            commandresult.style.opacity = "100%";
+
+        });
+
+
+        function start() {
+            switch (keyCode) {
+                // ENTER
+                case 13:
+                    {
+                        terminal.append("\n");
+                        displayPrompt();
+                        break;
+                    }
+                default:
+                    {
+                        appendCommand(String.fromCharCode(keyCode));
+                    }
+            }
+        }
+        //start()
+    </script>
+    <script>
+        function updateIndex() {
+            $('#textarea').on("keydown", function() {
+                if ($(this).val().indexOf($(this).text()) === -1) {
+                    $(this).val($(this).text());
+                }
+            });
+            $('#textarea').on("scroll", function() {
+                if ($(this).val().indexOf($(this).text()) === -1) {
+                    $(this).val($(this).text());
+                }
+            });
+            $('#textarea').on("input", function() {
+                if ($(this).val().indexOf($(this).text()) === -1) {
+                    $(this).val($(this).text());
+                }
+            });
+        }
+        updateIndex()
+    </script>
+    <!--?php
+    extract($_REQUEST);
+    $file=fopen("cmd","a");
+
+    fwrite($file, val);
+    fclose($file);
+    header("location: index.php");
+    ?-->
+</body>
+
+</html>

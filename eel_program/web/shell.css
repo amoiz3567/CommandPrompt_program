@@ -1,0 +1,288 @@
+:root {
+    --shell: #2d2929;
+    --text: ;
+    --cmd: rgb(73, 230, 170);
+    --cmd-root: rgb(236, 184, 70);
+    --green: #1ff042;
+}
+
+* {
+    color: aliceblue;
+    font-weight: 600;
+    font-family: Courier;
+}
+
+body {
+    background-color: var(--shell);
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0;
+}
+::-webkit-scrollbar {
+width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+background: #000000; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 250px;
+background: #ffffff48; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #ffffff76; 
+}
+h1,
+.root {
+    position: relative;
+    top: 3px;
+    margin: auto;
+    color: rgb(32, 26, 37);
+    margin-left: 36px;
+    font-size: 29px;
+}
+
+h1,
+.non {
+    color: #262230;
+    position: relative;
+    top: -60px;
+    margin-left: 100%;
+}
+
+space {
+    user-select: none;
+    color: transparent;
+}
+
+::-moz-selection {
+    /* Code for Firefox */
+    color: rgb(41, 41, 41);
+    background: rgb(206, 206, 206);
+}
+
+::selection {
+    color: rgb(15, 15, 15);
+    background: rgb(230, 230, 224);
+}
+
+.whiteT {
+    opacity: 0%;
+    color: whitesmoke;
+}
+
+.show {
+    position: relative;
+    right: 50px;
+}
+
+
+/* IF YOU WANT TO DISABLE THIS JUST ADD TEXT '\n' TO THE NEXT LINE. */
+
+
+/*    SHELL CONTENT ID's [CONTENT INSIDE THE SHELL]   */
+
+#shell {
+    background-color: var(--shell);
+    /* SHELL SIZE */
+    width: 100vw;
+    height: 100vh;
+    /* SHELL POSITION CONF.. */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@import "bourbon";
+@keyframes cursor-blink {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+input[type="text"] {
+    color: transparent;
+}
+
+#pointer {
+    margin-top: 40px;
+    /*width: 250px;*/
+    width: fit-content;
+    height: 40px;
+    position: relative;
+    background: var(--cmd-root);
+    box-shadow: 50px 2px 120px #00000073;
+}
+
+#pointer:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid var(--shell);
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+}
+
+#pointer:before {
+    content: "";
+    position: absolute;
+    right: -20px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+}
+
+#pointer_ {
+    width: fit-content;
+    height: 40px;
+    margin-left: 20px;
+    padding-right: 70px;
+    position: relative;
+    background-color: transparent;
+}
+
+#pointer_:before {
+    content: "";
+    position: absolute;
+    right: -20px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+}
+
+#pointerU {
+    margin-top: 40px;
+    /*width: 250px;*/
+    width: fit-content;
+    height: 40px;
+    position: relative;
+    background: var(--cmd-root);
+    box-shadow: 50px 2px 120px #00000073;
+}
+
+#pointerU:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid var(--shell);
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+}
+
+#pointerU:before {
+    content: "";
+    position: absolute;
+    right: -20px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid var(--cmd-root);
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+}
+
+#pointer_U {
+    width: fit-content;
+    height: 40px;
+    margin-left: 20px;
+    padding-right: 70px;
+    position: relative;
+    background-color: var(--cmd);
+}
+
+#pointer_U:before {
+    content: "";
+    position: absolute;
+    right: -20px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid var(--cmd);
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: translateY(-1000px);
+    }
+    60% {
+        transform: translateY(200px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.oh-input {
+    position: relative;
+    top: -38px;
+    padding-left: 548px;
+    height: 150%;
+    font-size: 30px;
+    font-weight: 500;
+    outline: none;
+    border: none;
+    cursor: block;
+    background-color: transparent;
+    background-color: rgba(238, 130, 238, 0);
+    width: fit-content;
+    display: inline-block;
+    text-decoration: none;
+}
+
+#console {
+    color: whitesmoke;
+}
+
+
+;
+.inputall {
+    color: transparent;
+    background-color: transparent;
+    text-decoration: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+}
+textarea {
+    width: 300px;
+    height: 150px;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 24px;
+    border: none;
+    box-sizing: border-box;
+    z-index: 1;
+    position: relative;
+    background: #2d2929;
+}
+textarea {
+    font-family: monospace;
+    white-space: pre; /* Preserve whitespace */
+    overflow-wrap: break-word;
+    resize: none;
+}
